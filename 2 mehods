@@ -1,0 +1,116 @@
+public void request_Post(){
+       
+        //String apikeytemp= prefs.getApikey();
+        //String apikeytemp= "45465464";
+        //String myParameter="123";
+        //String myHeader="456";
+
+        String URL = "http://111.111.1.1";
+
+        //RequestQueue mQueue = VolleySingleton.getInstance(getContext()).getRequestQueue();
+
+        StringRequest request = new StringRequest(Request.Method.POST, URL, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                Log.d("TAG",response);
+
+                try {
+                    JSONObject objson = new JSONObject(response);
+
+                } catch (Throwable t) {
+                    Log.e("tag", "Could not parse malformed JSON: \"" + response + "\"");
+                }
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error == null || error.networkResponse == null) {
+                    return;
+                }
+
+                String body;
+                //get status code here
+                final String statusCode = String.valueOf(error.networkResponse.statusCode);
+
+                if (statusCode.equals("401")) {
+                }
+
+                //get response body and parse with appropriate encoding
+                try {
+                    body = new String(error.networkResponse.data, "UTF-8");
+
+
+                } catch (UnsupportedEncodingException e) {
+                    // exception
+                }
+
+                //do stuff with the body...
+            }
+
+        }) {
+            @Override
+            public Priority getPriority() {
+                return Priority.HIGH;
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+                params.put("CodeId", myParameter);
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                headers.put("HeaderID", myHeader);
+                return headers;
+            }
+        };
+        //mQueue.add(request);
+    }
+
+
+    private void try_Post(){
+
+
+        JSONObject object = new JSONObject();
+//        try {
+//            //input your API parameters
+//            object.put("usernameOrEmail",Email.getText());
+//            object.put("password",password.getText());
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
+        // Enter the correct url for your api service site
+        JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, "http://192.168.2.6/", object,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+//                        Toast.makeText(Login_screen.this,"String Response : "+ response.toString(),Toast.LENGTH_LONG).show();
+                        try {
+                            Log.d("JSON", String.valueOf(response));
+                            String Error = response.getString("httpStatus");
+                            if (Error.equals("")||Error.equals(null)){
+
+                            }else if(Error.equals("OK")){
+                                JSONObject body = response.getJSONObject("body");
+
+                            }else {
+
+                            }
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+//                        resultTextView.setText("String Response : "+ response.toString());
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d("Error", "Error: " + error.getMessage());
+            }
+        });
+        RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+        requestQueue.add(jsonObjectRequest);
+    }
