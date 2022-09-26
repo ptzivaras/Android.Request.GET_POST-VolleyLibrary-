@@ -5,6 +5,9 @@ https://www.geeksforgeeks.org/how-to-post-data-to-api-using-volley-in-android/?r
 https://www.youtube.com/watch?v=FL37oah1k8k&list=PLshdtb5UWjSraOqG1iZW-8mDkJXe3LSL0&index=8
 https://www.youtube.com/watch?v=Xqizhonc7IE&list=PLshdtb5UWjSraOqG1iZW-8mDkJXe3LSL0&index=14
 
+https://www.reddit.com/r/Android/comments/xo3h1q/post_request_with_volley_library_how_can_i_add/
+https://stackoverflow.com/questions/44732699/android-volley-post-json-data-to-server
+
 Goal: 
 -Create Node.JS server
 -Get/Post Requests from Android Phone
