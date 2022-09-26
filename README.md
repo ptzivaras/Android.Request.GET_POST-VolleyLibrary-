@@ -11,6 +11,9 @@ https://stackoverflow.com/questions/44732699/android-volley-post-json-data-to-se
 //auto lei den einai kai oti kalitero
 https://stackoverflow.com/questions/44068202/send-object-with-volley
 
+//pass to body
+https://stackoverflow.com/questions/22057023/android-volley-post-string-in-body
+
 Goal: 
 -Create Node.JS server
 -Get/Post Requests from Android Phone
