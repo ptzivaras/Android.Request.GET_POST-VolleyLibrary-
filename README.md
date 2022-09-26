@@ -8,6 +8,9 @@ https://www.youtube.com/watch?v=Xqizhonc7IE&list=PLshdtb5UWjSraOqG1iZW-8mDkJXe3L
 https://www.reddit.com/r/Android/comments/xo3h1q/post_request_with_volley_library_how_can_i_add/
 https://stackoverflow.com/questions/44732699/android-volley-post-json-data-to-server
 
+//auto lei den einai kai oti kalitero
+https://stackoverflow.com/questions/44068202/send-object-with-volley
+
 Goal: 
 -Create Node.JS server
 -Get/Post Requests from Android Phone
