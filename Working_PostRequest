@@ -1,0 +1,182 @@
+public void postSession_23_9() {
+        //for(int i=0;i<8;i++){
+        //Change Session ID
+
+        Log.d("TAG", ": " + startPost + "," + finishPost);
+        for (int i = 0; i < 7; i++) {
+
+            startPost++;
+            finishPost = startPost + 1;
+//            //tempSessionID=tempSessionID+10;
+//            String startTime = "2020-05-05T00:00:00." + start + "Z";//"000"  Hours Min Sec
+//            String endTime = "2020-05-05T00:00:00." + finish + "Z";//"001"
+//
+//            Log.d("TAG", ": " + startTime + "," + endTime);
+
+
+        RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+        JSONObject object = new JSONObject();
+        try {
+            //input your API parameters
+            object.put("parameter", "value");
+            object.put("parameter", "value");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        String string = "{\n" +
+                "    \"product\": \"smartinsole\",\n" +
+                "    \"version\": 0.1,\n" +
+                "    \"releaseDate\": \"2020-05-05T00:00:00.000Z\",\n" +
+                "    \"demo\": false,\n" +
+                "    \"session\": {\n" +
+                "        \"sessionId\": \"2534517871\",\n" +
+                "        \"patientId\": \"axakaloeee\",\n" +
+                "        \"insoleId\": \"axakaloiei\",\n" +
+                "        \"startTime\": \"2020-05-05T00:00:00.00" + startPost + "Z\",\n" +//0
+                "        \"endTime\": \"2020-05-05T00:00:00.00" + finishPost + "Z\",\n" +//1
+                "        \"isPart\": false,\n" +
+                "        \"sessionType\": 0 ,\n" +
+                "\t\t\t\t\"insoleType\": \"smartinsole\",\n" +
+                "\t\t\t\t\"walkingSpeed\": \"low\", \n" +
+                "\t\t\t\t\"medication\" : \"yes\", \n" +
+                "\t\t\t\t\"group\": \"pd\"\n" +
+                "    },\n" +
+                "    \"data\": [\n" +
+                "        {\n" +
+                "            \"timestamp\": 0.2,\n" +
+                "            \"accLx\": -0.23857,\n" +
+                "            \"accLy\": 0.036621,\n" +
+                "            \"accLz\": 0.975586,\n" +
+                "            \"gyroLx\": -0.48,\n" +
+                "            \"gyroLy\": 3.75,\n" +
+                "            \"gyroLz\": -0.7,\n" +
+                "\t\t\t\"magLx\": 1,\n" +
+                "\t\t\t\"magLy\": 1,\n" +
+                "\t\t\t\"magLz\": 1,\n" +
+                "            \"pL01\": 5.25,\n" +
+                "            \"pL02\": 4.25,\n" +
+                "            \"pL03\": 4.75,\n" +
+                "            \"pL04\": 5.25,\n" +
+                "            \"pL05\": 3.25,\n" +
+                "            \"pL06\": 0.25,\n" +
+                "            \"pL07\": 0.75,\n" +
+                "            \"pL08\": 0.24,\n" +
+                "            \"pL09\": 2.0,\n" +
+                "            \"pL10\": 1.25,\n" +
+                "            \"pL11\": 1.25,\n" +
+                "            \"pL12\": 0.56,\n" +
+                "            \"pL13\": 0.0,\n" +
+                "            \"pL14\": 4.25,\n" +
+                "            \"pL15\": 0.75,\n" +
+                "            \"pL16\": 0.25,\n" +
+                "            \"grfL\": 394.0,\n" +
+                "            \"accRx\": null,\n" +
+                "            \"accRy\": null,\n" +
+                "            \"accRz\": null,\n" +
+                "            \"gyroRx\": null,\n" +
+                "            \"gyroRy\": null,\n" +
+                "            \"gyroRz\": null,\n" +
+                "\t\t\t\"magRx\": 1,\n" +
+                "\t\t\t\"magRy\": 1,\n" +
+                "\t\t\t\"magRz\": 1,\n" +
+                "            \"pR01\": null,\n" +
+                "            \"pR02\": null,\n" +
+                "            \"pR03\": null,\n" +
+                "            \"pR04\": null,\n" +
+                "            \"pR05\": null,\n" +
+                "            \"pR06\": null,\n" +
+                "            \"pR07\": null,\n" +
+                "            \"pR08\": null,\n" +
+                "            \"pR09\": null,\n" +
+                "            \"pR10\": null,\n" +
+                "            \"pR11\": null,\n" +
+                "            \"pR12\": null,\n" +
+                "            \"pR13\": null,\n" +
+                "            \"pR14\": null,\n" +
+                "            \"pR15\": null,\n" +
+                "            \"pR16\": null,\n" +
+                "            \"grfR\": null\n" +
+                "        }\n" +
+                "    ]\n" +
+                "}\n";
+
+
+
+        try {
+            JSONObject json1 = new JSONObject(string);
+            String postUrl = getString(R.string.base_url) + getString(R.string.post_sessions_url);
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, json1,
+                    new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Log.d("TAG", "Bika");
+                            Log.d("TAG", String.valueOf(response));
+                            Log.d("response", "");
+                        }
+                    }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+
+                    Toast.makeText(getActivity(), "Error occurred", Toast.LENGTH_SHORT).show();
+                }
+            }) {
+                @Override
+                public Priority getPriority() {
+                    return Priority.HIGH;
+                }
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+
+
+                    String apiKey = prefs.getApikey();
+                    apiKey = "f9e9550cfdaad086497e6180e8e2ffc3efd3bedd5d4353035f9f7aec87856b76736947bee201bbada4df2529f4c08f30fb03d74bc78874888fd456bb1120fc99";
+                    params.put("x-patient-api-key", apiKey);
+
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Content-Type", "application/json; charset=UTF-8");
+                    prefs = SharedPrefManager.getInstance(getActivity()).getUser();
+
+                    String token = prefs.getToken();
+                    token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoiYWNjZXNzIiwiaXNzIjoic21hcnRpbnNvbGUiLCJhdWQiOiJzbWFydGluc29sZSIsImlhdCI6MTY2NDI4NzcyMiwiZXhwIjoxNjY0MjkxMzIyLCJzdWIiOiJjbDZxNno5bHQwNTM3YXNpc2lkdjVyemlvIiwidXNlcm5hbWUiOiJ0ZWNoMDEiLCJmaXJzdE5hbWUiOiJUZWNobmljaWFuIiwibGFzdE5hbWUiOiJPbmUiLCJlbWFpbCI6InRlY2gwMUBlbWFpbC5jb20iLCJyb2xlIjoiVGVjaG5pY2lhbiJ9.cam-89_Ef5yBA554Mv9ctuhOVfhmA7HQxN4rw1onsjQ";
+                    headers.put("x-token", token);
+
+                    String apiKey = prefs.getApikey();
+                    apiKey = "f9e9550cfdaad086497e6180e8e2ffc3efd3bedd5d4353035f9f7aec87856b76736947bee201bbada4df2529f4c08f30fb03d74bc78874888fd456bb1120fc99";
+                    headers.put("x-patient-api-key", apiKey);
+
+                    return headers;
+                }
+
+//                @Override
+//                public byte[] getBody()  {
+//                    String httpPostBody="sessionId=9239517891&patientId=axakaloeee&insoleId=axakaloiei&startTime=2020-05-05T00:00:00.000Z&endTime=2020-05-05T00:00:00.002Z&isPart=false&sessionType=0&insoleType=smartinsole&walkingSpeed=low&medication=yes&group=pd";
+//                    // usually you'd have a field with some values you'd want to escape, you need to do it yourself if overriding getBody. here's how you do it
+//                    try {
+//                        httpPostBody=httpPostBody+"&randomFieldFilledWithAwkwardCharacters="+ URLEncoder.encode("{{%stuffToBe Escaped/","UTF-8");
+//                    } catch (UnsupportedEncodingException exception) {
+//                        Log.e("ERROR", "exception", exception);
+//                        // return null and don't pass any POST string if you encounter encoding error
+//                        return null;
+//                    }
+//                    return httpPostBody.getBytes();
+//                }
+
+            };
+
+            requestQueue.add(jsonObjectRequest);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        ;
+    }//auto einai gia polla post
+    }
