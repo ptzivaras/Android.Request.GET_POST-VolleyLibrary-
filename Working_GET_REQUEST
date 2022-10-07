@@ -1,0 +1,284 @@
+public void requestMetaData(){
+        //String apikey= prefs.getApikey();
+        String apikeytemp = "";
+        //String URL = "";
+
+        RequestQueue mQueue = VolleySingleton.getInstance(getContext()).getRequestQueue();
+
+        StringRequest request = new StringRequest(Request.Method.GET, URL, new com.android.volley.Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    prefs = SharedPrefManager.getInstance(getContext()).getUser();
+                    // get new response
+                    JSONObject objson = new JSONObject(response);
+                    
+                    walkingSummary_DataMetrics = new String[51];
+
+                    String perCase =objson.getString("perCase");
+                    String rightSingleSupportMean = objson.getString("rightSingleSupportMean");
+                    String rightSingleSupportStd =  objson.getString("rightSingleSupportStd");
+                    String leftSingleSupportMean =  objson.getString("leftSingleSupportMean");
+                    String leftSingleSupportStd = objson.getString("leftSingleSupportStd");
+                    String doubleSupportMean = objson.getString("doubleSupportMean");
+                    String doubleSupportStd = objson.getString("doubleSupportStd");
+                    String rightStancePhaseMean = objson.getString("rightStancePhaseMean");
+                    String rightStancePhaseStd = objson.getString("rightStancePhaseStd");
+                    String leftStancePhaseMean = objson.getString("leftStancePhaseMean");
+
+                    String leftStancePhaseStd = objson.getString("leftStancePhaseStd");
+                    String loadResponseRightMean = objson.getString("loadResponseRightMean");
+                    String loadResponseRightStd = objson.getString("loadResponseRightStd");
+                    String terminalStanceRightMean = objson.getString("terminalStanceRightMean");
+                    String terminalStanceRightStd = objson.getString("terminalStanceRightStd");
+                    String preswingRightMean = objson.getString("preswingRightMean");
+                    String preswingRightStd = objson.getString("preswingRightStd");
+                    String cycleTimeRightMean = objson.getString("cycleTimeRightMean");
+                    String cycleTimeRightStd = objson.getString("cycleTimeRightStd");
+                    String loadResponseLeftMean = objson.getString("loadResponseLeftMean");
+
+                    String loadResponseLeftStd = objson.getString("loadResponseLeftStd");
+                    String terminalStanceLeftMean = objson.getString("terminalStanceLeftMean");
+                    String terminalStanceLeftStd = objson.getString("terminalStanceLeftStd");
+                    String preswingLeftMean = objson.getString("preswingLeftMean");
+                    String preswingLeftStd = objson.getString("preswingLeftStd");
+                    String cycleTimeLeftMean = objson.getString("cycleTimeLeftMean");
+                    String cycleTimeLeftStd = objson.getString("cycleTimeLeftStd");
+                    String cadenceMean = objson.getString("cadenceMean");
+                    String cadenceStd = objson.getString("cadenceStd");
+                    String pRightSingleSupportMean = objson.getString("pRightSingleSupportMean");
+                    String pRightSingleSupportStd = objson.getString("pRightSingleSupportStd");
+                    String pLeftSingleSupportMean = objson.getString("pLeftSingleSupportMean");
+                    String pLeftSingleSupportStd = objson.getString("pLeftSingleSupportStd");
+                    String pDoubleSupportMean = objson.getString("pDoubleSupportMean");
+                    String pDoubleSupportStd = objson.getString("pDoubleSupportStd");
+                    String pRightStancePhaseMean = objson.getString("pRightStancePhaseMean");
+                    String pRightStancePhaseStd = objson.getString("pRightStancePhaseStd");
+                    String pLeftStancePhaseMean = objson.getString("pLeftStancePhaseMean");
+                    String pLeftStancePhaseStd = objson.getString("pLeftStancePhaseStd");
+                    String pLoadResponseRightMean = objson.getString("pLoadResponseRightMean");
+                    String pLoadResponseRightStd = objson.getString("pLoadResponseRightStd");
+                    String pTerminalStanceRightMean = objson.getString("pTerminalStanceRightMean");
+                    String pTerminalStanceRightStd = objson.getString("pTerminalStanceRightStd");
+                    String pPreswingRightMean = objson.getString("pPreswingRightMean");
+                    String pPreswingRightStd = objson.getString("pPreswingRightStd");
+                    String pLoadResponseLeftMean = objson.getString("pLoadResponseLeftMean");
+                    String pLoadResponseLeftStd = objson.getString("pLoadResponseLeftStd");
+                    String pTerminalStanceLeftMean = objson.getString("pTerminalStanceLeftMean");
+                    String pTerminalStanceLeftStd = objson.getString("pTerminalStanceLeftStd");
+                    String pPreswingLeftMean = objson.getString("pPreswingLeftMean");
+                    String pPreswingLeftStd = objson.getString("pPreswingLeftStd");
+
+                    walkingSummary_DataMetrics[0]= perCase;
+                    walkingSummary_DataMetrics[1]= rightSingleSupportMean;
+                    walkingSummary_DataMetrics[2]= rightSingleSupportStd;
+                    walkingSummary_DataMetrics[3]= leftSingleSupportMean;
+                    walkingSummary_DataMetrics[4]= leftSingleSupportStd;
+                    walkingSummary_DataMetrics[5]= doubleSupportMean;
+                    walkingSummary_DataMetrics[6]= doubleSupportStd;
+                    walkingSummary_DataMetrics[7]= rightStancePhaseMean;
+                    walkingSummary_DataMetrics[8]= rightStancePhaseStd;
+                    walkingSummary_DataMetrics[9]= leftStancePhaseMean;
+                    walkingSummary_DataMetrics[10]= leftStancePhaseStd;
+
+                    walkingSummary_DataMetrics[11]= loadResponseRightMean;
+                    walkingSummary_DataMetrics[12]= loadResponseRightStd;
+                    walkingSummary_DataMetrics[13]= terminalStanceRightMean;
+                    walkingSummary_DataMetrics[14]= terminalStanceRightStd;
+                    walkingSummary_DataMetrics[15]= preswingRightMean;
+                    walkingSummary_DataMetrics[16]= preswingRightStd;
+                    walkingSummary_DataMetrics[17]= cycleTimeRightMean;
+                    walkingSummary_DataMetrics[18]= cycleTimeRightStd;
+                    walkingSummary_DataMetrics[19]= loadResponseLeftMean;
+                    walkingSummary_DataMetrics[20]= loadResponseLeftStd;
+
+                    walkingSummary_DataMetrics[21]= terminalStanceLeftMean;
+                    walkingSummary_DataMetrics[22]= terminalStanceLeftStd;
+                    walkingSummary_DataMetrics[23]= preswingLeftMean;
+                    walkingSummary_DataMetrics[24]= preswingLeftStd;
+                    walkingSummary_DataMetrics[25]= cycleTimeLeftMean;
+                    walkingSummary_DataMetrics[26]= cycleTimeLeftStd;
+                    walkingSummary_DataMetrics[27]= cadenceMean;
+                    walkingSummary_DataMetrics[28]= cadenceStd;
+                    walkingSummary_DataMetrics[29]= pRightSingleSupportMean;
+                    walkingSummary_DataMetrics[30]= pRightSingleSupportStd;
+
+                    walkingSummary_DataMetrics[31]= pLeftSingleSupportMean;
+                    walkingSummary_DataMetrics[32]= pLeftSingleSupportStd;
+                    walkingSummary_DataMetrics[33]= pDoubleSupportMean;
+                    walkingSummary_DataMetrics[34]= pDoubleSupportStd;
+                    walkingSummary_DataMetrics[35]= pRightStancePhaseMean;
+                    walkingSummary_DataMetrics[36]= pRightStancePhaseStd;
+                    walkingSummary_DataMetrics[37]= pLeftStancePhaseMean;
+                    walkingSummary_DataMetrics[38]= pLeftStancePhaseStd;
+                    walkingSummary_DataMetrics[39]= pLoadResponseRightMean;
+                    walkingSummary_DataMetrics[40]= pLoadResponseRightStd;
+
+                    walkingSummary_DataMetrics[41]= pTerminalStanceRightMean;
+                    walkingSummary_DataMetrics[42]= pTerminalStanceRightStd;
+                    walkingSummary_DataMetrics[43]= pPreswingRightMean;
+                    walkingSummary_DataMetrics[44]= pPreswingRightStd;
+                    walkingSummary_DataMetrics[45]= pLoadResponseLeftMean;
+                    walkingSummary_DataMetrics[46]= pLoadResponseLeftStd;
+                    walkingSummary_DataMetrics[47]= pTerminalStanceLeftMean;
+                    walkingSummary_DataMetrics[48]= pTerminalStanceLeftStd;
+                    walkingSummary_DataMetrics[49]= pPreswingLeftMean;
+                    walkingSummary_DataMetrics[50]= pPreswingLeftStd;
+
+                    //Cut String a bit
+//                    for(int i=0;i<=50;i++){
+//                        Log.d("TAG0106",walkingSummary_DataMetrics[i]);
+//                        String myStr = walkingSummary_DataMetrics[i];
+//                        int pos = myStr.indexOf(".", 0);
+//
+//                        if(pos>=0) {//if "." inside String
+//                            Log.d("TAG0106", "pos= "+String.valueOf(pos));
+//                            int num = walkingSummary_DataMetrics[i].length()-pos-1;
+//                            Log.d("TAG0106", "num= "+String.valueOf(num));
+//                            if(num>2) {//How many characters after "." appear
+//                                walkingSummary_DataMetrics[i] = myStr.substring(0, pos + 2);
+//                            }else if(num==1){
+//                                //walkingSummary_DataMetrics[i] = myStr.substring(0, pos + 1);
+//                            }
+//                        }
+//                        Log.d("TAG0106",walkingSummary_DataMetrics[i]);
+//                    }
+
+                    //Round Numbers
+                    double Value;
+                    String New_Value;
+                    for(int i=0;i<=50;i++){
+                        Value = Double.parseDouble(walkingSummary_DataMetrics[i]);//String to double
+                        Value = Math.round(Value*100.0)/100.0;//Round it to 2 decimal places
+                        //Log.d("TAG0106", String.valueOf(Value));
+
+                        New_Value = Double.toString(Value);//double to String
+                        //Log.d("TAG0106", New_Value);
+                        walkingSummary_DataMetrics[i]=New_Value;
+                    }
+
+
+
+
+                    //RecyclerViewCode, after i get the data so it wont crash
+                    ArrayList<DataMetricsDataItem> metric_RecyclerList = new ArrayList<>();
+                    //round double number
+                    //double a = 123.123456;
+                    //double roundOff = (double) Math.round(a * 100) / 100;
+                    //Log.d("TAG305", String.valueOf(roundOff));
+
+
+//                    //This is String so cut it
+//                    String stdl = walkingSummary_DataMetrics[4].substring(0, 5);
+//                    String stdr = walkingSummary_DataMetrics[2].substring(0, 5);
+//                    String stdDouble = walkingSummary_DataMetrics[6].substring(0, 5);
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[3], "ms", "Support", walkingSummary_DataMetrics[1], "ms", "(±"+walkingSummary_DataMetrics[4]+")  ", "", "(±"+walkingSummary_DataMetrics[2]+")  ", ""+walkingSummary_DataMetrics[5]+"\n"+""+walkingSummary_DataMetrics[6], "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));//support
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[9], "ms", "Stance", walkingSummary_DataMetrics[7], "ms", "(±"+walkingSummary_DataMetrics[10]+")  ", "", "(±"+walkingSummary_DataMetrics[8]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));//stancephase
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[19], "ms", "Response", walkingSummary_DataMetrics[11], "ms", "(±"+walkingSummary_DataMetrics[20]+")  ", "", "(±"+walkingSummary_DataMetrics[12]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));//loadReponse
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[21], "ms", "Terminal", walkingSummary_DataMetrics[13], "ms", "(±"+walkingSummary_DataMetrics[22]+")  ", "", "(± "+walkingSummary_DataMetrics[12]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));//terminal
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[23], "ms", "Preswing", walkingSummary_DataMetrics[15], "ms", "(±"+walkingSummary_DataMetrics[24]+")  ", "", "(±"+walkingSummary_DataMetrics[16]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[25], "ms", "CycleTime", walkingSummary_DataMetrics[17], "ms", "(±"+walkingSummary_DataMetrics[26]+")  ", "", "(±"+walkingSummary_DataMetrics[18]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[27], "ms", "Cadence", "", "", "(±"+walkingSummary_DataMetrics[28]+")  ", "", "", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[31], "ms", "pSupport", walkingSummary_DataMetrics[29], "ms", "(±"+walkingSummary_DataMetrics[32]+")  ", "", "(±"+walkingSummary_DataMetrics[30]+")  ", walkingSummary_DataMetrics[33], "", "", ""+walkingSummary_DataMetrics[34]+"", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[37], "ms", "pStance", walkingSummary_DataMetrics[41], "ms", "(±"+walkingSummary_DataMetrics[36]+")  ", "", "(±"+walkingSummary_DataMetrics[37]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[45], "ms", "pResponse", walkingSummary_DataMetrics[39], "ms", "(±"+walkingSummary_DataMetrics[46]+")  ", "", "(±"+walkingSummary_DataMetrics[40]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[47], "ms", "pterminal", walkingSummary_DataMetrics[41], "ms", "(±"+walkingSummary_DataMetrics[48]+")  ", "", "(±"+walkingSummary_DataMetrics[45]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));
+
+                    metric_RecyclerList.add(new DataMetricsDataItem(walkingSummary_DataMetrics[49], "ms", "pPreswing", walkingSummary_DataMetrics[43], "ms", "(±"+walkingSummary_DataMetrics[50]+")  ", "", "(±"+walkingSummary_DataMetrics[44]+")  ", "", "", "", "", "", DataMetricsDataItem.ItemType.ONE_ITEM
+                    ));
+
+                    metricData_RecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_metricsData);
+                    metricData_LayoutManager = new LinearLayoutManager(getContext());
+                    metricData_Adapter = new metricAdapter(metric_RecyclerList);
+                    metricData_RecyclerView.setLayoutManager(metricData_LayoutManager);
+                    metricData_RecyclerView.setAdapter(metricData_Adapter);
+                    clickedCheck=1;
+
+                } catch (Throwable t) {
+                    Log.e("dataMetrics", "Could not parse malformed JSON: \"" + response + "\"");
+                }
+            }
+        }, new com.android.volley.Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (error == null || error.networkResponse == null) {
+                    return;
+                }
+
+                String body;
+                //get status code here
+                final String statusCode = String.valueOf(error.networkResponse.statusCode);
+
+                if (statusCode.equals("401")) {
+                    //refreshToken();
+                }
+
+                //get response body and parse with appropriate encoding
+                try {
+                    body = new String(error.networkResponse.data, "UTF-8");
+
+
+                } catch (UnsupportedEncodingException e) {
+                    // exception
+                }
+
+                //do stuff with the body...
+            }
+
+        }) {
+            @Override
+            public Priority getPriority() {
+                return Priority.HIGH;
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String, String> params = new HashMap<>();
+
+                prefs = SharedPrefManager.getInstance(getContext()).getUser();
+                //params.put("key1", value1);
+                //params.put("key2", value2());
+                //params.put("key3", "0");
+
+                return params;
+            }
+
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                Map<String, String> headers = new HashMap<>();
+                prefs = SharedPrefManager.getInstance(getContext()).getUser();
+
+                String token = prefs.getToken();
+                headers.put("x-token", token);
+                headers.put("x-api-key", apikeytemp);
+
+                //headers.put("patien api-key", apikeytemp);
+                //headers.put("api-key", apikeytemp);
+                return headers;
+            }
+        };
+        mQueue.add(request);
+    }
