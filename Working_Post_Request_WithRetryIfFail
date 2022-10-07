@@ -1,0 +1,71 @@
+public void postSession() {
+        Log.d("POST","POST STARTED");
+
+        RequestQueue mQueue = VolleySingleton.getInstance(getContext()).getRequestQueue(); //Volley.newRequestQueue(getActivity());
+      
+
+        String string = " Insert JSON HERE, i insert mine from postman ctr-a, ctr-c, ctr-v";
+
+        try {
+            JSONObject json1 = new JSONObject(string);
+            String postUrl = "URL";
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, json1,
+                    new com.android.volley.Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            Toast.makeText(getContext(), "Success Post ", Toast.LENGTH_LONG).show();
+                            Log.d("POST","POST SUCCESS");
+                        }
+                    },
+                    new com.android.volley.Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Log.d("POST", "Failure: "+error.networkResponse.statusCode + error.getMessage());
+                        }
+                    }
+            ) {
+                @Override
+                public Priority getPriority() {
+                    return Priority.HIGH;
+                }
+
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<>();
+
+                    return params;
+                }
+
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Content-Type", "application/json; charset=UTF-8");
+
+                    //String apiKey = prefs.getApikey();
+                    String apiKey = "";
+                    headers.put("-api-key-code-", apiKey);
+                    return headers;
+                }
+            };
+            jsonObjectRequest.setRetryPolicy(new RetryPolicy() {
+                @Override
+                public int getCurrentTimeout() {
+                    return 50000;
+                }
+
+                @Override
+                public int getCurrentRetryCount() {
+                    return 50000;
+                }
+
+                @Override
+                public void retry(VolleyError error) throws VolleyError {
+
+                }
+            });
+            mQueue.add(jsonObjectRequest);
+        } catch (JSONException e) {
+            e.getMessage();
+            e.printStackTrace();
+        };
+    }
