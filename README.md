@@ -2,6 +2,24 @@
 
 You need Pass Parameters + Headers with the two methods and at request method add an object and inside it a string which is the body thing. In postman also add that body and parameters and headers and it works.
 
+IF request is rejected or timeout then...
+jsonObjectRequest.setRetryPolicy(new RetryPolicy() {
+                @Override
+                public int getCurrentTimeout() {
+                    return 50000;
+                }
+
+            @Override
+            public int getCurrentRetryCount() {
+                return 50000;
+            }
+
+            @Override
+            public void retry(VolleyError error) throws VolleyError {
+
+            }
+        });
+
 https://www.geeksforgeeks.org/volley-library-in-android/
 https://www.geeksforgeeks.org/how-to-post-data-to-api-using-volley-in-android/?ref=rp
 https://www.youtube.com/watch?v=FL37oah1k8k&list=PLshdtb5UWjSraOqG1iZW-8mDkJXe3LSL0&index=8
